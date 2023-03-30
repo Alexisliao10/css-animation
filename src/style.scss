@@ -39,8 +39,8 @@ body {
   justify-content: center;
   background-color: pink;
   z-index: 30;
-
-  animation: loader 2s linear forwards;
+  // despausar loarder a 2s
+  animation: loader 0s linear forwards;
 
   div {
     margin: 10px;
@@ -63,6 +63,38 @@ body {
     animation-delay: 0.6s;
   }
 }
+
+.navbar {
+  background-color: lightpink;
+  grid-area: nav;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 0 0 80px;
+
+    animation: 2s navbar 0.5s ease-in-out;
+    img {
+      width: 50px;
+    }
+
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+      list-style: none;
+      padding: 0;
+      width: 450px;
+      a {
+        text-decoration: none;
+        color: $red;
+        font-weight: 300;
+      }
+    }
+  }
+}
+
+// keyframes
 
 @keyframes loader {
   0% {
@@ -92,7 +124,12 @@ body {
   }
 }
 
-.navbar {
-  background-color: lightpink;
-  grid-area: nav;
+@keyframes navbar {
+  0% {
+    transform: translateY(-200px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
