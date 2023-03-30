@@ -1,4 +1,5 @@
 body {
+  font-family: "Lato", sans-serif;
   height: 100%;
   margin: 0;
   overflow: hidden;
@@ -10,7 +11,13 @@ body {
 }
 
 .container {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  grid-template-rows: 20% 50% 30%;
+  grid-template-areas: "nav aside" "section aside" "footer aside";
   position: absolute;
+  height: 100%;
+  width: 100%;
   z-index: 10;
 }
 
@@ -25,6 +32,24 @@ body {
   z-index: 30;
   animation: loader 2s linear forwards;
 }
+.loader div {
+  margin: 10px;
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: scaling 2s ease-in-out infinite;
+}
+.loader div:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.loader div:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.loader div:nth-child(3) {
+  animation-delay: 0.6s;
+}
 
 @keyframes loader {
   0% {
@@ -37,5 +62,16 @@ body {
   100% {
     opacity: 0;
     visibility: hidden;
+  }
+}
+@keyframes scaling {
+  0%, 100% {
+    transform: scale(0.2);
+  }
+  40% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1);
   }
 }/*# sourceMappingURL=style.css.map */
