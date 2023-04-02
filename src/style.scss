@@ -32,53 +32,59 @@ body {
   position: absolute;
   height: 100%;
   width: 100%;
-  z-index: 10;
+  // z-index: 10;
 }
 
-.loader {
-  display: flex;
-  position: absolute;
-  height: 100%;
-  width: 100%;
+.side-content {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-area: aside;
   align-items: center;
-  justify-content: center;
-  background-color: pink;
-  z-index: 30;
-  // despausar loarder a 2s
-  animation: loader 0s linear forwards;
+
+  p {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    font-size: 36px;
+    transform: rotate(-90deg);
+
+    opacity: 0;
+
+    animation-name: side-content-text;
+    animation-duration: 0.5s;
+    animation-delay: 2.5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+  }
+
+  img {
+    width: 100%;
+    grid-column: 2 / 6;
+    grid-row: 1 / 2;
+
+    animation: 2s side-content-img 0.5s ease-in-out;
+  }
 
   div {
-    margin: 10px;
-    height: 40px;
-    width: 40px;
-    background-color: white;
-    border-radius: 50%;
+    background-color: $yellow;
+    height: 100%;
+    grid-row: 1 / 2;
+    grid-column: 4 / 7;
 
-    transform: scale(0);
-    animation: scaling 2s ease-in-out infinite;
-  }
-
-  div:nth-child(1) {
-    animation-delay: 0.2s;
-  }
-  div:nth-child(2) {
-    animation-delay: 0.4s;
-  }
-  div:nth-child(3) {
-    animation-delay: 0.6s;
+    z-index: -10;
   }
 }
 
 .navbar {
   display: flex;
-  background-color: lightpink;
   grid-area: nav;
+  height: 60%;
 
   &__content {
     display: flex;
-    align-items: center;
     width: 100%;
     padding: 0 0 0 80px;
+    align-items: center;
+    background-color: $yellow;
 
     animation: 2s navbar 0.5s ease-in-out;
     img {
@@ -124,6 +130,78 @@ body {
   }
 
   animation: 2s main-content 0.2s ease-in-out;
+}
+
+.footer {
+  display: flex;
+  position: relative;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  margin-block-start: 50px;
+  grid-area: footer;
+  border-radius: 0 80px 0 0;
+  background-color: $yellow;
+
+  animation: footer 0.5s ease-in-out 2.5s forwards;
+  transform: translateY(100%);
+
+  div {
+    display: flex;
+    justify-content: center;
+    width: 130px;
+    height: 40%;
+    border-radius: 20px 20px 0 0;
+    background-color: $blue;
+  }
+
+  div img {
+    position: absolute;
+    width: 160px;
+    bottom: 30px;
+
+    transform: translateY(0) scale(1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  div:hover img {
+    cursor: pointer;
+    transform: translateY(-20px) scale(1.1);
+    transition: transform 0.5s ease-in-out;
+  }
+}
+
+.loader {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: pink;
+  z-index: 30;
+  // despausar loarder a 2s
+  animation: loader 0s linear forwards;
+
+  div {
+    margin: 10px;
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    border-radius: 50%;
+
+    transform: scale(0);
+    animation: scaling 2s ease-in-out infinite;
+  }
+
+  div:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+  div:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+  div:nth-child(3) {
+    animation-delay: 0.6s;
+  }
 }
 
 // keyframes
@@ -173,5 +251,35 @@ body {
 
   100% {
     transform: translateY(0);
+  }
+}
+
+@keyframes side-content-text {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes side-content-img {
+  0% {
+    transform: translateX(600px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes footer {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0px);
   }
 }
