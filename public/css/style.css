@@ -145,7 +145,7 @@ body {
   width: 100%;
   align-items: center;
   justify-content: center;
-  background-color: pink;
+  background-color: white;
   z-index: 30;
   animation: loader 1.5s linear forwards;
 }
